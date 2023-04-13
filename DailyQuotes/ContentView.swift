@@ -61,7 +61,7 @@ struct ContentView: View {
                         
                         VStack{
                             if isShowingFull{
-                                Text("❝ \(quote.first?.quote ?? "") test❞ ")
+                                Text("❝ \(quote.first?.quote ?? "") test 2❞ ")
                                     .font(.largeTitle)
                                     .foregroundColor(colorScheme == .light ?  .white:.black)
                                 
