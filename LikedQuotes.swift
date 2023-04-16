@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct LikedQuotes: View {
- @State var quotes = [Quote]()
+ @State var quotes = [IdentifiableQuote]()
     
     @Environment(\.colorScheme) var colorScheme
     @State private var showingFull = false
-    @State var selectedQuote:Quote?
+    @State var selectedQuote:IdentifiableQuote?
     
     let columns = [
         GridItem(.adaptive(minimum: 170))
@@ -23,7 +23,7 @@ struct LikedQuotes: View {
         NavigationView{
             ScrollView{
                 LazyVGrid(columns: columns){
-                    ForEach(quotes,id: \.self){quote in
+                    ForEach(quotes){quote in
                         ZStack{
                             Rectangle()
                                 .frame(width: 170,height: 170)
@@ -65,6 +65,10 @@ struct LikedQuotes: View {
                 .onAppear(perform: loadLiked)
                 
             }
+            .sheet(item: $selectedQuote){quote in
+                            FullQuote(quote: quote)
+                    .preferredColorScheme(colorScheme == .light ? .dark : .light)
+                        }
             
         }
     }
@@ -73,7 +77,11 @@ struct LikedQuotes: View {
         let decoder = JSONDecoder()
         if let data = UserDefaults.standard.data(forKey: "Liked"){
             if let decodedQuotes = try? decoder.decode([Quote].self, from: data){
-                quotes = decodedQuotes
+                for quote in decodedQuotes{
+                    let identifiableQuote = IdentifiableQuote(quote: quote.quote, author: quote.author, category: quote.category)
+                    quotes.append(identifiableQuote)
+                }
+             
             }
         }
     }

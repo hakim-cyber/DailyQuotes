@@ -37,8 +37,8 @@ struct HeartToggleStyle: ToggleStyle {
 }
 
 struct ContentView: View {
-    @State private var quote = [Quote]()
-    @State var likedQuotes = [Quote]()
+    @State private var quote = [IdentifiableQuote]()
+    @State var likedQuotes = [IdentifiableQuote]()
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -206,7 +206,7 @@ struct ContentView: View {
     }
 
         
-    func getQuotes()async ->[Quote]?{
+    func getQuotes()async ->[IdentifiableQuote]?{
         
        
         
@@ -219,7 +219,12 @@ struct ContentView: View {
             let (data, _) = try await URLSession.shared.data(for: request)
             
             let decodedQuote = try JSONDecoder().decode([Quote].self, from: data)
-            return decodedQuote
+            if let quote = decodedQuote.first{
+                let IdentifiableQuotes = [IdentifiableQuote(quote: quote.quote, author: quote.author, category: quote.category)]
+                return IdentifiableQuotes
+            }
+            
+            return [IdentifiableQuote]()
             
         }catch{
             print("Error")
