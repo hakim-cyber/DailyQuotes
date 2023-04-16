@@ -14,7 +14,7 @@ struct Quote:Codable,Hashable{
     
 }
 struct IdentifiableQuote:Codable,Hashable,Identifiable{
-    var id = UUID()
+    var  id = UUID()
     let quote:String
     let author:String
     let category:String
@@ -133,7 +133,10 @@ struct ContentView: View {
                                 if offset.width > 100 || offset.width < -100{
                                     
                                     if offset.width > 0{
+                                       
                                         if let likedQuote = quote.first{
+                                            loadLiked()
+                                            
                                             likedQuotes.append(likedQuote)
                                             saveLiked()
                                             
@@ -169,13 +172,14 @@ struct ContentView: View {
                             isShowingFull.toggle()
                         }
                     }
-                    
+                  
                     .animation(.easeIn, value: isShowingAuthor ? 100:0)
                     .scaledToFit()
                 
               
                 
             }
+                
                 
             
         }
@@ -187,6 +191,7 @@ struct ContentView: View {
                         .font(.largeTitle)
                         .foregroundColor(.red)
                 }
+                
                 
             }
     }
@@ -232,6 +237,20 @@ struct ContentView: View {
         
         return nil
         
+    }
+    func loadLiked(){
+        let decoder = JSONDecoder()
+        if let data = UserDefaults.standard.data(forKey: "Liked"){
+            if let decodedQuotes = try? decoder.decode([Quote].self, from: data){
+                likedQuotes = []
+                for quote in decodedQuotes{
+                    let identifiableQuote = IdentifiableQuote(quote: quote.quote, author: quote.author, category: quote.category)
+                    
+                    likedQuotes.append(identifiableQuote)
+                }
+             
+            }
+        }
     }
     func saveLiked(){
        let Encoder = JSONEncoder()

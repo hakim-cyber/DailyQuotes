@@ -32,14 +32,14 @@ struct LikedQuotes: View {
                             
                             VStack(alignment: .center, spacing: 2){
                                 if showingFull{
-                                    Text("❝ \(quote.quote) ❞ ")
+                                    Text(" \(quote.quote)  ")
                                         .font(.largeTitle)
                                         .foregroundColor(colorScheme == .light ?  .white:.black)
                                     
                                     
                                     
                                 }else{
-                                    Text(" ❝\(quote.quote ) ❞ ")
+                                    Text(" \(quote.quote ) ")
                                         .font(.headline)
                                         .foregroundColor(colorScheme == .light ?  .white :.black)
                                     
@@ -57,6 +57,7 @@ struct LikedQuotes: View {
                             withAnimation {
                                 selectedQuote = quote
                             }
+                            
                             
                         }
                         
