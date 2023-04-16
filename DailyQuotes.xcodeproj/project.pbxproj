@@ -11,6 +11,8 @@
 		08260DA429E359C5008175DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08260DA329E359C5008175DE /* ContentView.swift */; };
 		08260DA629E359C7008175DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08260DA529E359C7008175DE /* Assets.xcassets */; };
 		08260DA929E359C7008175DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08260DA829E359C7008175DE /* Preview Assets.xcassets */; };
+		08260DCE29EC1988008175DE /* LikedQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08260DCD29EC1988008175DE /* LikedQuotes.swift */; };
+		08260DD029EC2609008175DE /* FullQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08260DCF29EC2609008175DE /* FullQuote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		08260DA329E359C5008175DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		08260DA529E359C7008175DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08260DA829E359C7008175DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		08260DCD29EC1988008175DE /* LikedQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedQuotes.swift; sourceTree = "<group>"; };
+		08260DCF29EC2609008175DE /* FullQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullQuote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 		08260D9529E359C5008175DE = {
 			isa = PBXGroup;
 			children = (
+				08260DCF29EC2609008175DE /* FullQuote.swift */,
+				08260DCD29EC1988008175DE /* LikedQuotes.swift */,
 				08260DA029E359C5008175DE /* DailyQuotes */,
 				08260D9F29E359C5008175DE /* Products */,
 			);
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				08260DA429E359C5008175DE /* ContentView.swift in Sources */,
+				08260DCE29EC1988008175DE /* LikedQuotes.swift in Sources */,
 				08260DA229E359C5008175DE /* DailyQuotesApp.swift in Sources */,
+				08260DD029EC2609008175DE /* FullQuote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

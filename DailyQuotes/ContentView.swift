@@ -6,7 +6,15 @@
 //
 
 import SwiftUI
-struct Quote:Codable{
+struct Quote:Codable,Hashable{
+    
+    let quote:String
+    let author:String
+    let category:String
+    
+}
+struct IdentifiableQuote:Codable,Hashable,Identifiable{
+    var id = UUID()
     let quote:String
     let author:String
     let category:String
@@ -30,7 +38,9 @@ struct HeartToggleStyle: ToggleStyle {
 
 struct ContentView: View {
     @State private var quote = [Quote]()
+    @State var likedQuotes = [Quote]()
     @Environment(\.colorScheme) var colorScheme
+    
     
     @State private var isShowingAuthor = false
     @State private var isShowingFull = false
@@ -77,7 +87,7 @@ struct ContentView: View {
                             if isShowingAuthor{
                                 Text(quote.first?.author ?? "")
                                     .font(.title3)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.yellow)
                                     .padding(0.5)
                             }
                             HStack{
@@ -121,6 +131,14 @@ struct ContentView: View {
                             }
                             .onEnded{ _ in
                                 if offset.width > 100 || offset.width < -100{
+                                    
+                                    if offset.width > 0{
+                                        if let likedQuote = quote.first{
+                                            likedQuotes.append(likedQuote)
+                                            saveLiked()
+                                            
+                                        }
+                                    }
                                     Task{
                                         
                                         if let retrievedQuote = await getQuotes(){
@@ -161,6 +179,16 @@ struct ContentView: View {
                 
             
         }
+            .toolbar{
+                NavigationLink{
+                    LikedQuotes()
+                }label:{
+                    Image(systemName: "heart.circle.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                }
+                
+            }
     }
 
             .navigationTitle("Quote of the day")
@@ -199,6 +227,12 @@ struct ContentView: View {
         
         return nil
         
+    }
+    func saveLiked(){
+       let Encoder = JSONEncoder()
+        if let encoded = try? Encoder.encode(likedQuotes){
+            UserDefaults.standard.set(encoded, forKey: "Liked")
+        }
     }
 }
 
