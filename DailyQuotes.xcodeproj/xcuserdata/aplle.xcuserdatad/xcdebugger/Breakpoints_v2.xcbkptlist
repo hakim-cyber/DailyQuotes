@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "95A5CF81-ACE4-47B4-8413-D1B0F1831E8E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8CC1AA0-340F-4FD6-87ED-A01E0C09BC40"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LikedQuotes.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "columns"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "A8CC1AA0-340F-4FD6-87ED-A01E0C09BC40 - 61c2073f1b2194a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyQuotes.LikedQuotes.quoteFilteredByAuthor.getter : Swift.Array&lt;DailyQuotes.IdentifiableQuote&gt;"
+                  moduleName = "DailyQuotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplle/Desktop/swift%20learning/DailyQuotes/LikedQuotes.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "A8CC1AA0-340F-4FD6-87ED-A01E0C09BC40 - 6f50ff24cff1730a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyQuotes.LikedQuotes.init(quotes: Swift.Array&lt;DailyQuotes.IdentifiableQuote&gt;, searchText: Swift.String, colorScheme: SwiftUI.Environment&lt;SwiftUI.ColorScheme&gt;, selectedQuote: Swift.Optional&lt;DailyQuotes.IdentifiableQuote&gt;, howfilter: Swift.String) -&gt; DailyQuotes.LikedQuotes"
+                  moduleName = "DailyQuotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplle/Desktop/swift%20learning/DailyQuotes/LikedQuotes.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

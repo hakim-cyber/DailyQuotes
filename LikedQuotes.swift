@@ -8,22 +8,38 @@
 import SwiftUI
 
 struct LikedQuotes: View {
+   
  @State var quotes = [IdentifiableQuote]()
-    
+    @State var searchText = ""
     @Environment(\.colorScheme) var colorScheme
     @State private var showingFull = false
     @State var selectedQuote:IdentifiableQuote?
+    @State var howfilter = "author"
+
     
     let columns = [
         GridItem(.adaptive(minimum: 170))
     ]
-    
+    var quoteFilteredByAuthor:[IdentifiableQuote]{
+        if searchText.isEmpty{
+            return quotes
+        }else{
+            if howfilter == "author"{
+                return quotes.filter{$0.author.localizedCaseInsensitiveContains(searchText)}
+            }else{
+                return quotes.filter{$0.quote.localizedCaseInsensitiveContains(searchText)}
+            }
+        }
+    }
     
     var body: some View {
         NavigationView{
+            VStack{
+                SearchBar(text: $searchText,filter: $howfilter)
+                    .padding(20)
             ScrollView{
                 LazyVGrid(columns: columns){
-                    ForEach(quotes){quote in
+                    ForEach(quoteFilteredByAuthor){quote in
                         ZStack{
                             Rectangle()
                                 .frame(width: 170,height: 170)
@@ -51,7 +67,7 @@ struct LikedQuotes: View {
                                     .padding(4)
                             }
                             .padding()
-                        }
+                        }.padding(5)
                         .scaledToFit()
                         .onTapGesture {
                             withAnimation {
@@ -59,17 +75,26 @@ struct LikedQuotes: View {
                             }
                             
                             
+                            
                         }
                         
                     }
+                    
                 }
                 .onAppear(perform: loadLiked)
                 
+                
             }
             .sheet(item: $selectedQuote){quote in
-                            FullQuote(quote: quote)
+                FullQuote(quote: quote)
                     .preferredColorScheme(colorScheme == .light ? .dark : .light)
-                        }
+            }
+                
+            .background(.ultraThickMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .padding(.horizontal,10)
+           
+        }
             
         }
     }
@@ -91,5 +116,42 @@ struct LikedQuotes: View {
 struct LikedQuotes_Previews: PreviewProvider {
     static var previews: some View {
         LikedQuotes()
+    }
+}
+
+
+
+
+struct SearchBar: View {
+    
+    @Binding var text: String
+    @Binding var filter:String
+    
+  let filters = ["author","prompt"]
+    
+    var body: some View {
+        VStack{
+            HStack{
+                Spacer()
+                Picker("Filter", selection: $filter){
+                    ForEach(filters,id: \.self){type in
+                        Text("By \(type.uppercased())")
+                    }
+                }
+                .pickerStyle(.automatic)
+            }
+        HStack {
+            TextField("Search ", text: $text)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+            
+            Button(action: {
+                text = ""
+            }, label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundColor(.gray)
+            })
+        }
+    }
     }
 }
