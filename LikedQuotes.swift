@@ -97,6 +97,7 @@ struct LikedQuotes: View {
         }
             
         }
+        .phoneOnlyNavigationView()
     }
     
     func loadLiked(){

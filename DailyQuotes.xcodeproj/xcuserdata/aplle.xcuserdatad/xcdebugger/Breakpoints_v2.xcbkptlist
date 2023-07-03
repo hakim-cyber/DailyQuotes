@@ -49,6 +49,21 @@
                   endingLineNumber = "21"
                   offsetFromSymbolStart = "456">
                </Location>
+               <Location
+                  uuid = "A8CC1AA0-340F-4FD6-87ED-A01E0C09BC40 - 6f50ff24cff1730a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DailyQuotes.LikedQuotes.init(quotes: Swift.Array&lt;DailyQuotes.IdentifiableQuote&gt;, searchText: Swift.String, colorScheme: SwiftUI.Environment&lt;SwiftUI.ColorScheme&gt;, selectedQuote: Swift.Optional&lt;DailyQuotes.IdentifiableQuote&gt;, howfilter: Swift.String) -&gt; DailyQuotes.LikedQuotes"
+                  moduleName = "DailyQuotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplle/Desktop/swift%20learning/DailyQuotes/LikedQuotes.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "496">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

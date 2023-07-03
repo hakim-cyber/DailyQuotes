@@ -6,6 +6,17 @@
 //
 
 import SwiftUI
+
+extension View{
+    @ViewBuilder func phoneOnlyNavigationView()->some View{
+        if UIDevice.current.userInterfaceIdiom == .phone{
+            self.navigationViewStyle(.stack)
+        }else{
+            self
+        }
+    }
+}
+
 struct Quote:Codable,Hashable{
     
     let quote:String
@@ -195,6 +206,7 @@ struct ContentView: View {
                 
             }
     }
+        .phoneOnlyNavigationView()
 
             .navigationTitle("Quote of the day")
             .navigationBarTitleDisplayMode(.inline)
